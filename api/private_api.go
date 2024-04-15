@@ -12,6 +12,7 @@ package api
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -1197,10 +1198,10 @@ func (a *PrivateApiService) PostApiV2Orders(ctx context.Context, xMAXACCESSKEY s
 	localVarPostBody["market"] = parameterToString(market, "")
 	localVarPostBody["side"] = parameterToString(side, "")
 	localVarPostBody["volume"] = parameterToString(volume, "")
-	if localVarTempParam, localVarOk := localVarOptionals["price"].(string); localVarOk {
+	if localVarTempParam, localVarOk := localVarOptionals["price"].(float64); localVarOk {
 		localVarPostBody["price"] = parameterToString(localVarTempParam, "")
 	}
-	if localVarTempParam, localVarOk := localVarOptionals["stop_price"].(string); localVarOk {
+	if localVarTempParam, localVarOk := localVarOptionals["stop_price"].(float64); localVarOk {
 		localVarPostBody["stop_price"] = parameterToString(localVarTempParam, "")
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["ord_type"].(string); localVarOk {
@@ -1222,6 +1223,7 @@ func (a *PrivateApiService) PostApiV2Orders(ctx context.Context, xMAXACCESSKEY s
 	}
 
 	if err = json.NewDecoder(localVarHTTPResponse.Body).Decode(&successPayload); err != nil {
+		fmt.Printf("==================NewDecoder error: ", err)
 		return successPayload, localVarHTTPResponse, err
 	}
 
