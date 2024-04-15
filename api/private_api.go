@@ -25,14 +25,17 @@ var (
 
 type PrivateApiService service
 
-/* PrivateApiService
+/*
+	PrivateApiService
+
 get details of a specific deposit
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param xMAXACCESSKEY access key
 @param xMAXPAYLOAD encoded payload
 @param xMAXSIGNATURE encrypted signature
 @param txid unique transaction id
-@return Deposit*/
+@return Deposit
+*/
 func (a *PrivateApiService) GetApiV2Deposit(ctx context.Context, xMAXACCESSKEY string, xMAXPAYLOAD string, xMAXSIGNATURE string, txid string) (Deposit, *http.Response, error) {
 	var (
 		localVarHTTPMethod = strings.ToUpper("Get")
@@ -94,15 +97,20 @@ func (a *PrivateApiService) GetApiV2Deposit(ctx context.Context, xMAXACCESSKEY s
 	return successPayload, localVarHTTPResponse, err
 }
 
-/* PrivateApiService where to deposit
+/*
+	PrivateApiService where to deposit
+
 The address could be empty when a new one is generating, try again later in that case.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param xMAXACCESSKEY access key
 @param xMAXPAYLOAD encoded payload
 @param xMAXSIGNATURE encrypted signature
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "currency" (string) unique currency id, check /api/v2/currencies for available currencies
-@return []PaymentAddress*/
+
+	@param "currency" (string) unique currency id, check /api/v2/currencies for available currencies
+
+@return []PaymentAddress
+*/
 func (a *PrivateApiService) GetApiV2DepositAddress(ctx context.Context, xMAXACCESSKEY string, xMAXPAYLOAD string, xMAXSIGNATURE string, localVarOptionals map[string]interface{}) ([]PaymentAddress, *http.Response, error) {
 	var (
 		localVarHTTPMethod = strings.ToUpper("Get")
@@ -170,15 +178,20 @@ func (a *PrivateApiService) GetApiV2DepositAddress(ctx context.Context, xMAXACCE
 	return successPayload, localVarHTTPResponse, err
 }
 
-/* PrivateApiService where to deposit
+/*
+	PrivateApiService where to deposit
+
 The addresses could be empty before generated, please call POST /deposit_addresses in that case
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param xMAXACCESSKEY access key
 @param xMAXPAYLOAD encoded payload
 @param xMAXSIGNATURE encrypted signature
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "currency" (string) unique currency id, check /api/v2/currencies for available currencies
-@return []PaymentAddress*/
+
+	@param "currency" (string) unique currency id, check /api/v2/currencies for available currencies
+
+@return []PaymentAddress
+*/
 func (a *PrivateApiService) GetApiV2DepositAddresses(ctx context.Context, xMAXACCESSKEY string, xMAXPAYLOAD string, xMAXSIGNATURE string, localVarOptionals map[string]interface{}) ([]PaymentAddress, *http.Response, error) {
 	var (
 		localVarHTTPMethod = strings.ToUpper("Get")
@@ -246,22 +259,27 @@ func (a *PrivateApiService) GetApiV2DepositAddresses(ctx context.Context, xMAXAC
 	return successPayload, localVarHTTPResponse, err
 }
 
-/* PrivateApiService
+/*
+	PrivateApiService
+
 get your deposits history
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param xMAXACCESSKEY access key
 @param xMAXPAYLOAD encoded payload
 @param xMAXSIGNATURE encrypted signature
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "currency" (string) unique currency id, check /api/v2/currencies for available currencies
-    @param "from" (int32) target period start (Epoch time in seconds)
-    @param "to" (int32) target period end (Epoch time in seconds)
-    @param "state" (string)
-    @param "pagination" (bool) do pagination &amp; return metadata in header (default false)
-    @param "page" (int32) page number, applied for pagination (default 1)
-    @param "limit" (int32) returned limit (1~1000, default 50)
-    @param "offset" (int32) records to skip, not applied for pagination (default 0)
-@return []Deposit*/
+
+	@param "currency" (string) unique currency id, check /api/v2/currencies for available currencies
+	@param "from" (int32) target period start (Epoch time in seconds)
+	@param "to" (int32) target period end (Epoch time in seconds)
+	@param "state" (string)
+	@param "pagination" (bool) do pagination &amp; return metadata in header (default false)
+	@param "page" (int32) page number, applied for pagination (default 1)
+	@param "limit" (int32) returned limit (1~1000, default 50)
+	@param "offset" (int32) records to skip, not applied for pagination (default 0)
+
+@return []Deposit
+*/
 func (a *PrivateApiService) GetApiV2Deposits(ctx context.Context, xMAXACCESSKEY string, xMAXPAYLOAD string, xMAXSIGNATURE string, localVarOptionals map[string]interface{}) ([]Deposit, *http.Response, error) {
 	var (
 		localVarHTTPMethod = strings.ToUpper("Get")
@@ -371,13 +389,16 @@ func (a *PrivateApiService) GetApiV2Deposits(ctx context.Context, xMAXACCESSKEY 
 	return successPayload, localVarHTTPResponse, err
 }
 
-/* PrivateApiService
+/*
+	PrivateApiService
+
 get your profile and accounts infomation
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param xMAXACCESSKEY access key
 @param xMAXPAYLOAD encoded payload
 @param xMAXSIGNATURE encrypted signature
-@return Member*/
+@return Member
+*/
 func (a *PrivateApiService) GetApiV2MembersMe(ctx context.Context, xMAXACCESSKEY string, xMAXPAYLOAD string, xMAXSIGNATURE string) (Member, *http.Response, error) {
 	var (
 		localVarHTTPMethod = strings.ToUpper("Get")
@@ -438,14 +459,17 @@ func (a *PrivateApiService) GetApiV2MembersMe(ctx context.Context, xMAXACCESSKEY
 	return successPayload, localVarHTTPResponse, err
 }
 
-/* PrivateApiService
+/*
+	PrivateApiService
+
 get a specific order.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param xMAXACCESSKEY access key
 @param xMAXPAYLOAD encoded payload
 @param xMAXSIGNATURE encrypted signature
 @param id unique order id
-@return Order*/
+@return Order
+*/
 func (a *PrivateApiService) GetApiV2Order(ctx context.Context, xMAXACCESSKEY string, xMAXPAYLOAD string, xMAXSIGNATURE string, id int32) (Order, *http.Response, error) {
 	var (
 		localVarHTTPMethod = strings.ToUpper("Get")
@@ -507,7 +531,9 @@ func (a *PrivateApiService) GetApiV2Order(ctx context.Context, xMAXACCESSKEY str
 	return successPayload, localVarHTTPResponse, err
 }
 
-/* PrivateApiService
+/*
+	PrivateApiService
+
 get your orders, results is paginated.
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param xMAXACCESSKEY access key
@@ -515,13 +541,16 @@ get your orders, results is paginated.
 @param xMAXSIGNATURE encrypted signature
 @param market unique market id, check /api/v2/markets for available markets
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "state" (string) filter by state, default to &#39;wait&#39;
-    @param "orderBy" (string) order in created time, default to &#39;asc&#39;.
-    @param "pagination" (bool) do pagination &amp; return metadata in header (default true)
-    @param "page" (int32) page number, applied for pagination (default 1)
-    @param "limit" (int32) returned limit (1~1000, default 100)
-    @param "offset" (int32) records to skip, not applied for pagination (default 0)
-@return []Order*/
+
+	@param "state" (string) filter by state, default to &#39;wait&#39;
+	@param "orderBy" (string) order in created time, default to &#39;asc&#39;.
+	@param "pagination" (bool) do pagination &amp; return metadata in header (default true)
+	@param "page" (int32) page number, applied for pagination (default 1)
+	@param "limit" (int32) returned limit (1~1000, default 100)
+	@param "offset" (int32) records to skip, not applied for pagination (default 0)
+
+@return []Order
+*/
 func (a *PrivateApiService) GetApiV2Orders(ctx context.Context, xMAXACCESSKEY string, xMAXPAYLOAD string, xMAXSIGNATURE string, market string, localVarOptionals map[string]interface{}) ([]Order, *http.Response, error) {
 	var (
 		localVarHTTPMethod = strings.ToUpper("Get")
@@ -620,7 +649,9 @@ func (a *PrivateApiService) GetApiV2Orders(ctx context.Context, xMAXACCESSKEY st
 	return successPayload, localVarHTTPResponse, err
 }
 
-/* PrivateApiService
+/*
+	PrivateApiService
+
 get your executed trades, sorted in reverse creation order
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param xMAXACCESSKEY access key
@@ -628,15 +659,18 @@ get your executed trades, sorted in reverse creation order
 @param xMAXSIGNATURE encrypted signature
 @param market unique market id, check /api/v2/markets for available markets
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "timestamp" (int32) the seconds elapsed since Unix epoch, set to return trades executed before the time only
-    @param "from" (int32) trade id, set ot return trades created after the trade
-    @param "to" (int32) trade id, set to return trades created before the trade
-    @param "orderBy" (string) order the trades by created time, default to &#39;desc&#39;
-    @param "pagination" (bool) do pagination &amp; return metadata in header (default true)
-    @param "page" (int32) page number, applied for pagination (default 1)
-    @param "limit" (int32) returned limit (1~1000, default 50)
-    @param "offset" (int32) records to skip, not applied for pagination (default 0)
-@return []Trade*/
+
+	@param "timestamp" (int32) the seconds elapsed since Unix epoch, set to return trades executed before the time only
+	@param "from" (int32) trade id, set ot return trades created after the trade
+	@param "to" (int32) trade id, set to return trades created before the trade
+	@param "orderBy" (string) order the trades by created time, default to &#39;desc&#39;
+	@param "pagination" (bool) do pagination &amp; return metadata in header (default true)
+	@param "page" (int32) page number, applied for pagination (default 1)
+	@param "limit" (int32) returned limit (1~1000, default 50)
+	@param "offset" (int32) records to skip, not applied for pagination (default 0)
+
+@return []Trade
+*/
 func (a *PrivateApiService) GetApiV2TradesMy(ctx context.Context, xMAXACCESSKEY string, xMAXPAYLOAD string, xMAXSIGNATURE string, market string, localVarOptionals map[string]interface{}) ([]Trade, *http.Response, error) {
 	var (
 		localVarHTTPMethod = strings.ToUpper("Get")
@@ -747,14 +781,17 @@ func (a *PrivateApiService) GetApiV2TradesMy(ctx context.Context, xMAXACCESSKEY 
 	return successPayload, localVarHTTPResponse, err
 }
 
-/* PrivateApiService
+/*
+	PrivateApiService
+
 get details of a specific withdraw
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param xMAXACCESSKEY access key
 @param xMAXPAYLOAD encoded payload
 @param xMAXSIGNATURE encrypted signature
 @param uuid unique withdraw id
-@return Withdrawal*/
+@return Withdrawal
+*/
 func (a *PrivateApiService) GetApiV2Withdrawal(ctx context.Context, xMAXACCESSKEY string, xMAXPAYLOAD string, xMAXSIGNATURE string, uuid string) (Withdrawal, *http.Response, error) {
 	var (
 		localVarHTTPMethod = strings.ToUpper("Get")
@@ -816,22 +853,27 @@ func (a *PrivateApiService) GetApiV2Withdrawal(ctx context.Context, xMAXACCESSKE
 	return successPayload, localVarHTTPResponse, err
 }
 
-/* PrivateApiService
+/*
+	PrivateApiService
+
 get your withdrawals history
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param xMAXACCESSKEY access key
 @param xMAXPAYLOAD encoded payload
 @param xMAXSIGNATURE encrypted signature
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "currency" (string) unique currency id, check /api/v2/currencies for available currencies
-    @param "from" (int32) target period start (Epoch time in seconds)
-    @param "to" (int32) target period end (Epoch time in seconds)
-    @param "state" (string)
-    @param "pagination" (bool) do pagination &amp; return metadata in header (default false)
-    @param "page" (int32) page number, applied for pagination (default 1)
-    @param "limit" (int32) returned limit (1~1000, default 50)
-    @param "offset" (int32) records to skip, not applied for pagination (default 0)
-@return []Withdrawal*/
+
+	@param "currency" (string) unique currency id, check /api/v2/currencies for available currencies
+	@param "from" (int32) target period start (Epoch time in seconds)
+	@param "to" (int32) target period end (Epoch time in seconds)
+	@param "state" (string)
+	@param "pagination" (bool) do pagination &amp; return metadata in header (default false)
+	@param "page" (int32) page number, applied for pagination (default 1)
+	@param "limit" (int32) returned limit (1~1000, default 50)
+	@param "offset" (int32) records to skip, not applied for pagination (default 0)
+
+@return []Withdrawal
+*/
 func (a *PrivateApiService) GetApiV2Withdrawals(ctx context.Context, xMAXACCESSKEY string, xMAXPAYLOAD string, xMAXSIGNATURE string, localVarOptionals map[string]interface{}) ([]Withdrawal, *http.Response, error) {
 	var (
 		localVarHTTPMethod = strings.ToUpper("Get")
@@ -941,14 +983,17 @@ func (a *PrivateApiService) GetApiV2Withdrawals(ctx context.Context, xMAXACCESSK
 	return successPayload, localVarHTTPResponse, err
 }
 
-/* PrivateApiService create deposit addresses
+/*
+	PrivateApiService create deposit addresses
+
 Address creation is asynchronous, please call GET /deposit_addresses later to get generated addresses
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param xMAXACCESSKEY access key
 @param xMAXPAYLOAD encoded payload
 @param xMAXSIGNATURE encrypted signature
 @param currency unique currency id, check /api/v2/currencies for available currencies
-@return []PaymentAddress*/
+@return []PaymentAddress
+*/
 func (a *PrivateApiService) PostApiV2DepositAddresses(ctx context.Context, xMAXACCESSKEY string, xMAXPAYLOAD string, xMAXSIGNATURE string, currency string) ([]PaymentAddress, *http.Response, error) {
 	var (
 		localVarHTTPMethod = strings.ToUpper("Post")
@@ -1010,14 +1055,17 @@ func (a *PrivateApiService) PostApiV2DepositAddresses(ctx context.Context, xMAXA
 	return successPayload, localVarHTTPResponse, err
 }
 
-/* PrivateApiService
+/*
+	PrivateApiService
+
 cancel an order
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param xMAXACCESSKEY access key
 @param xMAXPAYLOAD encoded payload
 @param xMAXSIGNATURE encrypted signature
 @param id unique order id
-@return Order*/
+@return Order
+*/
 func (a *PrivateApiService) PostApiV2OrderDelete(ctx context.Context, xMAXACCESSKEY string, xMAXPAYLOAD string, xMAXSIGNATURE string, id int32) (Order, *http.Response, error) {
 	var (
 		localVarHTTPMethod = strings.ToUpper("Post")
@@ -1079,7 +1127,9 @@ func (a *PrivateApiService) PostApiV2OrderDelete(ctx context.Context, xMAXACCESS
 	return successPayload, localVarHTTPResponse, err
 }
 
-/* PrivateApiService
+/*
+	PrivateApiService
+
 create a sell/buy order
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param xMAXACCESSKEY access key
@@ -1089,10 +1139,13 @@ create a sell/buy order
 @param side &#39;sell&#39; or &#39;buy&#39;
 @param volume total amount to sell/buy, an order could be partially executed
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "price" (string) price of a unit
-    @param "stopPrice" (string) price to trigger a stop order
-    @param "ordType" (string) &#39;limit&#39;, &#39;market&#39;, &#39;stop_limit&#39;, or &#39;stop_market&#39;
-@return Order*/
+
+	@param "price" (string) price of a unit
+	@param "stopPrice" (string) price to trigger a stop order
+	@param "ordType" (string) &#39;limit&#39;, &#39;market&#39;, &#39;stop_limit&#39;, or &#39;stop_market&#39;
+
+@return Order
+*/
 func (a *PrivateApiService) PostApiV2Orders(ctx context.Context, xMAXACCESSKEY string, xMAXPAYLOAD string, xMAXSIGNATURE string, market string, side string, volume string, localVarOptionals map[string]interface{}) (Order, *http.Response, error) {
 	var (
 		localVarHTTPMethod = strings.ToUpper("Post")
@@ -1109,10 +1162,10 @@ func (a *PrivateApiService) PostApiV2Orders(ctx context.Context, xMAXACCESSKEY s
 	localVarFormParams := url.Values{}
 	localVarPostBody := make(map[string]interface{})
 
-	if err := typeCheckParameter(localVarOptionals["price"], "string", "price"); err != nil {
+	if err := typeCheckParameter(localVarOptionals["price"], "float64", "price"); err != nil {
 		return successPayload, nil, err
 	}
-	if err := typeCheckParameter(localVarOptionals["stop_price"], "string", "stop_price"); err != nil {
+	if err := typeCheckParameter(localVarOptionals["stop_price"], "float64", "stop_price"); err != nil {
 		return successPayload, nil, err
 	}
 	if err := typeCheckParameter(localVarOptionals["ord_type"], "string", "ord_type"); err != nil {
@@ -1175,16 +1228,21 @@ func (a *PrivateApiService) PostApiV2Orders(ctx context.Context, xMAXACCESSKEY s
 	return successPayload, localVarHTTPResponse, err
 }
 
-/* PrivateApiService
+/*
+	PrivateApiService
+
 cancel all your orders with given market and side
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param xMAXACCESSKEY access key
 @param xMAXPAYLOAD encoded payload
 @param xMAXSIGNATURE encrypted signature
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "side" (string) set tp cancel only sell (asks) or buy (bids) orders
-    @param "market" (string) specify market like btctwd / ethbtc
-@return []Order*/
+
+	@param "side" (string) set tp cancel only sell (asks) or buy (bids) orders
+	@param "market" (string) specify market like btctwd / ethbtc
+
+@return []Order
+*/
 func (a *PrivateApiService) PostApiV2OrdersClear(ctx context.Context, xMAXACCESSKEY string, xMAXPAYLOAD string, xMAXSIGNATURE string, localVarOptionals map[string]interface{}) ([]Order, *http.Response, error) {
 	var (
 		localVarHTTPMethod = strings.ToUpper("Post")
@@ -1258,7 +1316,9 @@ func (a *PrivateApiService) PostApiV2OrdersClear(ctx context.Context, xMAXACCESS
 	return successPayload, localVarHTTPResponse, err
 }
 
-/* PrivateApiService create multiple sell/buy orders
+/*
+	PrivateApiService create multiple sell/buy orders
+
 create multiple sell/buy orders, please put your orders as an array in json body
 * @param ctx context.Context for authentication, logging, tracing, etc.
 @param xMAXACCESSKEY access key
@@ -1268,10 +1328,13 @@ create multiple sell/buy orders, please put your orders as an array in json body
 @param ordersSide &#39;sell&#39; or &#39;buy&#39;
 @param ordersVolume total amount to sell/buy, an order could be partially executed
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "ordersPrice" ([]string) price of a unit
-    @param "ordersStopPrice" ([]string) price to trigger a stop order
-    @param "ordersOrdType" ([]string) &#39;limit&#39;, &#39;market&#39;, &#39;stop_limit&#39;, or &#39;stop_market&#39;
-@return []Order*/
+
+	@param "ordersPrice" ([]string) price of a unit
+	@param "ordersStopPrice" ([]string) price to trigger a stop order
+	@param "ordersOrdType" ([]string) &#39;limit&#39;, &#39;market&#39;, &#39;stop_limit&#39;, or &#39;stop_market&#39;
+
+@return []Order
+*/
 func (a *PrivateApiService) PostApiV2OrdersMulti(ctx context.Context, xMAXACCESSKEY string, xMAXPAYLOAD string, xMAXSIGNATURE string, market string, ordersSide []string, ordersVolume []string, localVarOptionals map[string]interface{}) ([]Order, *http.Response, error) {
 	var (
 		localVarHTTPMethod = strings.ToUpper("Post")
