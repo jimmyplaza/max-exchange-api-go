@@ -18,9 +18,9 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/maicoin/max-exchange-api-go/api"
-	"github.com/maicoin/max-exchange-api-go/models"
-	"github.com/maicoin/max-exchange-api-go/types"
+	"github.com/jimmyplaza/max-exchange-api-go/api"
+	"github.com/jimmyplaza/max-exchange-api-go/models"
+	"github.com/jimmyplaza/max-exchange-api-go/types"
 )
 
 type tickerJSON struct {

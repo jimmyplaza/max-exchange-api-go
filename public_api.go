@@ -19,7 +19,7 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/maicoin/max-exchange-api-go/models"
+	"github.com/jimmyplaza/max-exchange-api-go/models"
 )
 
 type publicClient = client
@@ -27,7 +27,6 @@ type publicClient = client
 // Markets returns available markets on MAX.
 //
 // Available `CallOption`:
-//
 func (c *publicClient) Markets(ctx context.Context, opts ...CallOption) (results []*models.Market, err error) {
 	markets, _, err := c.c.PublicApi.GetApiV2Markets(ctx)
 
@@ -42,7 +41,6 @@ func (c *publicClient) Markets(ctx context.Context, opts ...CallOption) (results
 // Markets returns available currencies on MAX.
 //
 // Available `CallOption`:
-//
 func (c *publicClient) Currencies(ctx context.Context, opts ...CallOption) (results []*models.Currency, err error) {
 	currencies, _, err := c.c.PublicApi.GetApiV2Currencies(ctx)
 
@@ -57,7 +55,6 @@ func (c *publicClient) Currencies(ctx context.Context, opts ...CallOption) (resu
 // Ticker returns a ticker of specific market.
 //
 // Available `CallOption`:
-//
 func (c *publicClient) Ticker(ctx context.Context, market string, opts ...CallOption) (*models.Ticker, error) {
 	ticker, _, err := c.c.PublicApi.GetApiV2TickersMarket(ctx, market)
 	if err != nil {
@@ -70,7 +67,6 @@ func (c *publicClient) Ticker(ctx context.Context, market string, opts ...CallOp
 // Tickers returns tickers of all markets.
 //
 // Available `CallOption`:
-//
 func (c *publicClient) Tickers(ctx context.Context, opts ...CallOption) (models.Tickers, error) {
 	tickers, _, err := c.c.PublicApi.GetApiV2Tickers(ctx)
 	if err != nil {
@@ -89,8 +85,9 @@ func (c *publicClient) Tickers(ctx context.Context, opts ...CallOption) (models.
 // OrderBook returns order books of specific market.
 //
 // Available `CallOption`:
-//     AsksLimit(): returned sell orders limit, default to 20
-//     BidsLimit(): returned buy orders limit, default to 20
+//
+//	AsksLimit(): returned sell orders limit, default to 20
+//	BidsLimit(): returned buy orders limit, default to 20
 func (c *publicClient) OrderBook(ctx context.Context, market string, opts ...CallOption) (*models.OrderBook, error) {
 	o := defaultOptions()
 	for _, opt := range opts {
@@ -105,7 +102,8 @@ func (c *publicClient) OrderBook(ctx context.Context, market string, opts ...Cal
 // Depth returns depth of specific market.
 //
 // Available `CallOption`:
-//     Limit(): returned price levels limit, default to 300
+//
+//	Limit(): returned price levels limit, default to 300
 func (c *publicClient) Depth(ctx context.Context, market string, opts ...CallOption) (*models.Depth, error) {
 	o := defaultOptions()
 	for _, opt := range opts {
@@ -130,16 +128,17 @@ func (c *publicClient) Depth(ctx context.Context, market string, opts ...CallOpt
 // Trades returns recent trades on market.
 //
 // Available `CallOption`:
-//     Timestamp(): the seconds elapsed since Unix epoch, set to return trades executed before the time only
-//     Time(): the time in Go format, set to return trades executed before the time only
-//     From(): trade id, set ot return trades created after the trade
-//     To(): trade id, set to return trades created before the trade
-//     OrderDesc(): use descending order by created time, default value
-//     OrderAsc(): use ascending order by created time
-//     Pagination(): do pagination & return metadata in header (default true)
-//     Page(): page number, applied for pagination (default 1)
-//     Limit(): returned limit (1~1000, default 50)
-//     Offset(): records to skip, not applied for pagination (default 0)
+//
+//	Timestamp(): the seconds elapsed since Unix epoch, set to return trades executed before the time only
+//	Time(): the time in Go format, set to return trades executed before the time only
+//	From(): trade id, set ot return trades created after the trade
+//	To(): trade id, set to return trades created before the trade
+//	OrderDesc(): use descending order by created time, default value
+//	OrderAsc(): use ascending order by created time
+//	Pagination(): do pagination & return metadata in header (default true)
+//	Page(): page number, applied for pagination (default 1)
+//	Limit(): returned limit (1~1000, default 50)
+//	Offset(): records to skip, not applied for pagination (default 0)
 func (c *publicClient) Trades(ctx context.Context, market string, opts ...CallOption) (results []*models.Trade, err error) {
 	o := defaultOptions()
 	for _, opt := range opts {
@@ -158,11 +157,12 @@ func (c *publicClient) Trades(ctx context.Context, market string, opts ...CallOp
 // K returns OHLC chart of specific market.
 //
 // Available `CallOption`:
-//     Timestamp(): the seconds elapsed since Unix epoch, set to return data after the timestamp only
-//     Time(): the time in Go format, set to return data after the time only
-//     Period(): time period of K line in minute, default to 1
-//     PeriodDuration(): time period of K line in time.Duration format, default to 1*time.Minute
-//     Limit(): returned data points limit, default to 30
+//
+//	Timestamp(): the seconds elapsed since Unix epoch, set to return data after the timestamp only
+//	Time(): the time in Go format, set to return data after the time only
+//	Period(): time period of K line in minute, default to 1
+//	PeriodDuration(): time period of K line in time.Duration format, default to 1*time.Minute
+//	Limit(): returned data points limit, default to 30
 func (c *publicClient) K(ctx context.Context, market string, opts ...CallOption) ([]*models.Candle, error) {
 	o := defaultOptions()
 	for _, opt := range opts {
@@ -187,7 +187,6 @@ func (c *publicClient) K(ctx context.Context, market string, opts ...CallOption)
 // Time returns current sever time.
 //
 // Available `CallOption`:
-//
 func (c *publicClient) Time(ctx context.Context, opts ...CallOption) (time.Time, error) {
 	resp, err := c.c.PublicApi.GetApiV2Timestamp(ctx)
 	if err != nil {

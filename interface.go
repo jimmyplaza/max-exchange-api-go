@@ -18,8 +18,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/maicoin/max-exchange-api-go/models"
-	"github.com/maicoin/max-exchange-api-go/types"
+	"github.com/jimmyplaza/max-exchange-api-go/models"
+	"github.com/jimmyplaza/max-exchange-api-go/types"
 )
 
 // API provides an interface to the MAX APIs

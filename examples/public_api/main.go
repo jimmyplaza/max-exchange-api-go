@@ -18,8 +18,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-
-	"github.com/maicoin/max-exchange-api-go"
 )
 
 func main() {

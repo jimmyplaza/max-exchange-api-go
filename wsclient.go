@@ -21,7 +21,7 @@ import (
 	"os"
 	"sync"
 
-	"github.com/maicoin/max-exchange-api-go/models"
+	"github.com/jimmyplaza/max-exchange-api-go/models"
 
 	event "github.com/asaskevich/EventBus"
 	"github.com/gorilla/websocket"
@@ -150,7 +150,8 @@ func (w *wsClient) SubscribeTrade(market string, ch chan *models.TradeEvent) (Tr
 // SubscribeAccount subscribes the accounts changes for an user
 //
 // Note:
-//     Use WSAuthToken() to pass your auth tokens.
+//
+//	Use WSAuthToken() to pass your auth tokens.
 func (w *wsClient) SubscribeAccount(ch chan models.AccountEvent) (AccountSubscription, error) {
 	handler := func(ev models.AccountEvent) {
 		ch <- ev

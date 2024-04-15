@@ -17,7 +17,7 @@ package max
 import (
 	"encoding/json"
 
-	"github.com/maicoin/max-exchange-api-go/models"
+	"github.com/jimmyplaza/max-exchange-api-go/models"
 )
 
 type subscriptionSignature struct {

@@ -22,8 +22,8 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/maicoin/max-exchange-api-go/models"
-	"github.com/maicoin/max-exchange-api-go/types"
+	"github.com/jimmyplaza/max-exchange-api-go/models"
+	"github.com/jimmyplaza/max-exchange-api-go/types"
 )
 
 type privateClient = client
@@ -33,7 +33,8 @@ type privateClient = client
 // Available `CallOption`:
 //
 // Note:
-//     Use AuthToken() to pass your auth tokens.
+//
+//	Use AuthToken() to pass your auth tokens.
 func (c *privateClient) Me(ctx context.Context, opts ...CallOption) (*models.Member, error) {
 	member, _, err := c.c.PrivateApi.GetApiV2MembersMe(ctx, "", "", "")
 
@@ -45,7 +46,8 @@ func (c *privateClient) Me(ctx context.Context, opts ...CallOption) (*models.Mem
 // Available `CallOption`:
 //
 // Note:
-//     Use AuthToken() to pass your auth tokens.
+//
+//	Use AuthToken() to pass your auth tokens.
 func (c *privateClient) Deposit(ctx context.Context, txid string, opts ...CallOption) (*models.Deposit, error) {
 	deposit, _, err := c.c.PrivateApi.GetApiV2Deposit(ctx, "", "", "", txid)
 
@@ -55,19 +57,21 @@ func (c *privateClient) Deposit(ctx context.Context, txid string, opts ...CallOp
 // Deposits returns the history of your deposits.
 //
 // Available `CallOption`:
-//    Currency(): unique currency id, use Currencies() for available currencies.
-//    From(): target period start (Epoch time in seconds)
-//    FromTime(): target period start
-//    To(): target period end (Epoch time in seconds)
-//    ToTime(): target period end
-//    State(): the state of deposit
-//    Pagination(): do pagination & return metadata in header (default false)
-//    Page(): page number, applied for pagination (default 1)
-//    Limit(): returned limit (1~1000, default 50)
-//    Offset(): records to skip, not applied for pagination (default 0)
+//
+//	Currency(): unique currency id, use Currencies() for available currencies.
+//	From(): target period start (Epoch time in seconds)
+//	FromTime(): target period start
+//	To(): target period end (Epoch time in seconds)
+//	ToTime(): target period end
+//	State(): the state of deposit
+//	Pagination(): do pagination & return metadata in header (default false)
+//	Page(): page number, applied for pagination (default 1)
+//	Limit(): returned limit (1~1000, default 50)
+//	Offset(): records to skip, not applied for pagination (default 0)
 //
 // Note:
-//     Use AuthToken() to pass your auth tokens.
+//
+//	Use AuthToken() to pass your auth tokens.
 func (c *privateClient) Deposits(ctx context.Context, opts ...CallOption) (results []*models.Deposit, err error) {
 	o := defaultOptions()
 	for _, opt := range opts {
@@ -88,12 +92,14 @@ func (c *privateClient) Deposits(ctx context.Context, opts ...CallOption) (resul
 // DepositAddress returns the addresses which are able to deposit.
 //
 // Available `CallOption`:
-//    Currency(): unique currency id, use Currencies() for available currencies.
+//
+//	Currency(): unique currency id, use Currencies() for available currencies.
 //
 // The address could be empty when a new one is generating, try again later in that case.
 //
 // Note:
-//     Use AuthToken() to pass your auth tokens.
+//
+//	Use AuthToken() to pass your auth tokens.
 func (c *privateClient) DepositAddress(ctx context.Context, opts ...CallOption) (results []*models.PaymentAddress, err error) {
 	o := defaultOptions()
 	for _, opt := range opts {
@@ -116,7 +122,8 @@ func (c *privateClient) DepositAddress(ctx context.Context, opts ...CallOption) 
 // Available `CallOption`:
 //
 // Note:
-//     Use AuthToken() to pass your auth tokens.
+//
+//	Use AuthToken() to pass your auth tokens.
 func (c *privateClient) DepositAddresses(ctx context.Context, opts ...CallOption) (results []*models.PaymentAddress, err error) {
 	o := defaultOptions()
 	for _, opt := range opts {
@@ -134,12 +141,13 @@ func (c *privateClient) DepositAddresses(ctx context.Context, opts ...CallOption
 
 // CreateDepositAddresses creates new addresses for deposit.
 //
-// Address creation is asynchronous, please call DepositAddresses later to get generated addresses
+// # Address creation is asynchronous, please call DepositAddresses later to get generated addresses
 //
 // Available `CallOption`:
 //
 // Note:
-//     Use AuthToken() to pass your auth tokens.
+//
+//	Use AuthToken() to pass your auth tokens.
 func (c *privateClient) CreateDepositAddresses(ctx context.Context, currency string, opts ...CallOption) (results []*models.PaymentAddress, err error) {
 	deposits, _, err := c.c.PrivateApi.PostApiV2DepositAddresses(ctx, "", "", "", currency)
 	for _, d := range deposits {
@@ -153,19 +161,21 @@ func (c *privateClient) CreateDepositAddresses(ctx context.Context, currency str
 // Withdrawals returns the withdrawals history.
 //
 // Available `CallOption`:
-//     Currency(): unique currency id, check Currencies() for available currencies
-//     From(): target period start (Epoch time in seconds)
-//     FromTime(): target period start
-//     To(): target period end (Epoch time in seconds)
-//     ToTime(): target period end
-//     State(): the state of withdrawals
-//     Pagniation(): do pagination & return metadata in header (default false)
-//     Page(): page number, applied for pagination (default 1)
-//     Limit(): returned limit (1~1000, default 50)
-//     Offset(): records to skip, not applied for pagination (default 0)
+//
+//	Currency(): unique currency id, check Currencies() for available currencies
+//	From(): target period start (Epoch time in seconds)
+//	FromTime(): target period start
+//	To(): target period end (Epoch time in seconds)
+//	ToTime(): target period end
+//	State(): the state of withdrawals
+//	Pagniation(): do pagination & return metadata in header (default false)
+//	Page(): page number, applied for pagination (default 1)
+//	Limit(): returned limit (1~1000, default 50)
+//	Offset(): records to skip, not applied for pagination (default 0)
 //
 // Note:
-//     Use AuthToken() to pass your auth tokens.
+//
+//	Use AuthToken() to pass your auth tokens.
 func (c *privateClient) Withdrawals(ctx context.Context, opts ...CallOption) (results []*models.Withdrawal, err error) {
 	o := defaultOptions()
 	for _, opt := range opts {
@@ -186,7 +196,8 @@ func (c *privateClient) Withdrawals(ctx context.Context, opts ...CallOption) (re
 // Available `CallOption`:
 //
 // Note:
-//     Use AuthToken() to pass your auth tokens.
+//
+//	Use AuthToken() to pass your auth tokens.
 func (c *privateClient) Withdrawal(ctx context.Context, uuid string, opts ...CallOption) (*models.Withdrawal, error) {
 	o := defaultOptions()
 	for _, opt := range opts {
@@ -205,12 +216,14 @@ func (c *privateClient) Withdrawal(ctx context.Context, uuid string, opts ...Cal
 // volume: total amount to sell/buy, an order could be partially executed
 //
 // Available `CallOption`:
-//    Price(): price per unit
-//    StopPrice(): price per unit to trigger a stop order
-//    OrderType(): `OrderTypeLimit`, `OrderTypeMarket`, `OrderTypeStopLimit`, or `OrderTypeStopMarket`
+//
+//	Price(): price per unit
+//	StopPrice(): price per unit to trigger a stop order
+//	OrderType(): `OrderTypeLimit`, `OrderTypeMarket`, `OrderTypeStopLimit`, or `OrderTypeStopMarket`
 //
 // Note:
-//     Use AuthToken() to pass your auth tokens.
+//
+//	Use AuthToken() to pass your auth tokens.
 func (c *privateClient) CreateOrder(ctx context.Context, market string, side string, volumes types.Volume, opts ...CallOption) (*models.Order, error) {
 	o := defaultOptions()
 	for _, opt := range opts {
@@ -227,7 +240,8 @@ func (c *privateClient) CreateOrder(ctx context.Context, market string, side str
 // Available `CallOption`:
 //
 // Note:
-//     Use AuthToken() to pass your auth tokens.
+//
+//	Use AuthToken() to pass your auth tokens.
 func (c *privateClient) CreateOrders(ctx context.Context, market string, orderRequests []*models.OrderRequest, opts ...CallOption) (results []*models.Order, err error) {
 	o := defaultOptions()
 	for _, opt := range opts {
@@ -272,7 +286,8 @@ func (c *privateClient) CreateOrders(ctx context.Context, market string, orderRe
 // Available `CallOption`:
 //
 // Note:
-//     Use AuthToken() to pass your auth tokens.
+//
+//	Use AuthToken() to pass your auth tokens.
 func (c *privateClient) CancelOrder(ctx context.Context, id int32, opts ...CallOption) (*models.Order, error) {
 	o := defaultOptions()
 	for _, opt := range opts {
@@ -287,11 +302,13 @@ func (c *privateClient) CancelOrder(ctx context.Context, id int32, opts ...CallO
 // CancelOrders cancels a series of sell/buy orders.
 //
 // Available `CallOption`:
-//     OrderSide(): set tp cancel only sell (asks) or buy (bids) orders
-//     Market(): specify market like btctwd / ethbtc
+//
+//	OrderSide(): set tp cancel only sell (asks) or buy (bids) orders
+//	Market(): specify market like btctwd / ethbtc
 //
 // Note:
-//     Use AuthToken() to pass your auth tokens.
+//
+//	Use AuthToken() to pass your auth tokens.
 func (c *privateClient) CancelOrders(ctx context.Context, opts ...CallOption) (results []*models.Order, err error) {
 	o := defaultOptions()
 	for _, opt := range opts {
@@ -311,7 +328,8 @@ func (c *privateClient) CancelOrders(ctx context.Context, opts ...CallOption) (r
 // Available `CallOption`:
 //
 // Note:
-//     Use AuthToken() to pass your auth tokens.
+//
+//	Use AuthToken() to pass your auth tokens.
 func (c *privateClient) Order(ctx context.Context, id int32, opts ...CallOption) (*models.Order, error) {
 	order, _, err := c.c.PrivateApi.GetApiV2Order(ctx, "", "", "", id)
 
@@ -321,16 +339,18 @@ func (c *privateClient) Order(ctx context.Context, id int32, opts ...CallOption)
 // Orders returns your orders.
 //
 // Available `CallOption`:
-//     State(): filter by state, default to 'OrderStateWait'
-//     OrderDesc(): use descending order by created time
-//     OrderAsc(): use ascending order by created time, default value
-//     Pagination(): do pagination & return metadata in header (default true)
-//     Page(): page number, applied for pagination (default 1)
-//     Limit(): returned limit (1~1000, default 100)
-//     Offset(): records to skip, not applied for pagination (default 0)
+//
+//	State(): filter by state, default to 'OrderStateWait'
+//	OrderDesc(): use descending order by created time
+//	OrderAsc(): use ascending order by created time, default value
+//	Pagination(): do pagination & return metadata in header (default true)
+//	Page(): page number, applied for pagination (default 1)
+//	Limit(): returned limit (1~1000, default 100)
+//	Offset(): records to skip, not applied for pagination (default 0)
 //
 // Note:
-//     Use AuthToken() to pass your auth tokens.
+//
+//	Use AuthToken() to pass your auth tokens.
 func (c *privateClient) Orders(ctx context.Context, market string, opts ...CallOption) (results []*models.Order, err error) {
 	o := defaultOptions()
 	for _, opt := range opts {
@@ -349,19 +369,21 @@ func (c *privateClient) Orders(ctx context.Context, market string, opts ...CallO
 // MyTrades returns the executed trades which are sorted in reverse creation order.
 //
 // Available `CallOption`:
-//     Timestamp(): the seconds elapsed since Unix epoch, set to return trades executed before the time only
-//     Time(): the time in Go format, set to return trades executed before the time only
-//     From(): trade id, set ot return trades created after the trade
-//     To(): trade id, set to return trades created before the trade
-//     OrderDesc(): use descending order by created time, default value
-//     OrderAsc(): use ascending order by created time
-//     Pagination(): do pagination & return metadata in header (default true)
-//     Page(): page number, applied for pagination (default 1)
-//     Limit(): returned limit (1~1000, default 50)
-//     Offset(): records to skip, not applied for pagination (default 0)
+//
+//	Timestamp(): the seconds elapsed since Unix epoch, set to return trades executed before the time only
+//	Time(): the time in Go format, set to return trades executed before the time only
+//	From(): trade id, set ot return trades created after the trade
+//	To(): trade id, set to return trades created before the trade
+//	OrderDesc(): use descending order by created time, default value
+//	OrderAsc(): use ascending order by created time
+//	Pagination(): do pagination & return metadata in header (default true)
+//	Page(): page number, applied for pagination (default 1)
+//	Limit(): returned limit (1~1000, default 50)
+//	Offset(): records to skip, not applied for pagination (default 0)
 //
 // Note:
-//     Use AuthToken() to pass your auth tokens.
+//
+//	Use AuthToken() to pass your auth tokens.
 func (c *privateClient) MyTrades(ctx context.Context, market string, opts ...CallOption) (results []*models.Trade, err error) {
 	o := defaultOptions()
 	for _, opt := range opts {

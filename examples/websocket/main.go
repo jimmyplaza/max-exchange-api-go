@@ -21,8 +21,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/maicoin/max-exchange-api-go"
-	"github.com/maicoin/max-exchange-api-go/models"
+	"github.com/jimmyplaza/max-exchange-api-go/models"
 )
 
 func main() {

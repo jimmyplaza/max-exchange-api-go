@@ -15,7 +15,7 @@
 package models
 
 import (
-	"github.com/maicoin/max-exchange-api-go/api"
+	"github.com/jimmyplaza/max-exchange-api-go/api"
 )
 
 type Market = api.Market
