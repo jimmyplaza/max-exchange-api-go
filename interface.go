@@ -225,7 +225,7 @@ type PrivateAPI interface {
 	//
 	// Note:
 	//     Use AuthToken() to pass your auth tokens.
-	CancelOrder(context.Context, int32, ...CallOption) (*models.Order, error)
+	CancelOrder(context.Context, int64, ...CallOption) (*models.Order, error)
 
 	// CancelOrders cancels a series of sell/buy orders.
 	//
