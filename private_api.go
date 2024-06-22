@@ -288,7 +288,7 @@ func (c *privateClient) CreateOrders(ctx context.Context, market string, orderRe
 // Note:
 //
 //	Use AuthToken() to pass your auth tokens.
-func (c *privateClient) CancelOrder(ctx context.Context, id int32, opts ...CallOption) (*models.Order, error) {
+func (c *privateClient) CancelOrder(ctx context.Context, id int64, opts ...CallOption) (*models.Order, error) {
 	o := defaultOptions()
 	for _, opt := range opts {
 		opt(o)

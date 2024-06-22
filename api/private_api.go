@@ -765,6 +765,9 @@ func (a *PrivateApiService) GetApiV2TradesMy(ctx context.Context, xMAXACCESSKEY 
 		return successPayload, nil, err
 	}
 
+	fmt.Printf("======localVarQueryParams: %+v\n", localVarQueryParams)
+	fmt.Printf("======localVarPostBody: %+v\n", localVarPostBody)
+
 	localVarHTTPResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHTTPResponse == nil {
 		return successPayload, localVarHTTPResponse, err
@@ -1067,7 +1070,7 @@ cancel an order
 @param id unique order id
 @return Order
 */
-func (a *PrivateApiService) PostApiV2OrderDelete(ctx context.Context, xMAXACCESSKEY string, xMAXPAYLOAD string, xMAXSIGNATURE string, id int32) (Order, *http.Response, error) {
+func (a *PrivateApiService) PostApiV2OrderDelete(ctx context.Context, xMAXACCESSKEY string, xMAXPAYLOAD string, xMAXSIGNATURE string, id int64) (Order, *http.Response, error) {
 	var (
 		localVarHTTPMethod = strings.ToUpper("Post")
 		localVarFileName   string
